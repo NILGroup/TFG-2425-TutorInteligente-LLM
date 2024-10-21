@@ -147,6 +147,14 @@ void ALocalFileDatabaseActor::Init()
 	_querys = TMap<FString, TArray<FString>>();
 }
 
+void ALocalFileDatabaseActor::CreateNewDirectoryAndSetPath(FString path, FString directoryName)
+{
+	filesystem::create_directory(FStringToString(path));
+	string auxPath = FStringToString(path) + "/" + FStringToString(directoryName);
+	filesystem::create_directory(auxPath);
+	SetPath(StringToFString(auxPath));
+}
+
 void ALocalFileDatabaseActor::CreateTable(FString tableName, TArray<FString> header)
 {
 	if (!TableExists(tableName)) {
@@ -171,7 +179,7 @@ void ALocalFileDatabaseActor::CreateTable(FString tableName, TArray<FString> hea
 }
 
 
-void ALocalFileDatabaseActor::ReadTable(FString tableName, bool hasHeader,
+void ALocalFileDatabaseActor::ReadTable(FString tableName, bool hasHeader, 
 	FString& header, TArray<FString>& data)
 {
 	fstream file;
@@ -242,9 +250,9 @@ void ALocalFileDatabaseActor::InsertQuerysToTable() {
 
 void ALocalFileDatabaseActor::InsertUserToTable(FString userName, FString data)
 {
-	pair<bool, int> exist_user_info = UserExistsInDatabase(userName);
+	//pair<bool, int> exist_user_info = UserExistsInDatabase(userName);
 
-	string newUserName = FStringToString(userName) + "_" + to_string(exist_user_info.second);
+	//string newUserName = FStringToString(userName) + "_" + to_string(exist_user_info.second);
 	FQueryData queryData = GetDataFromQuery(data);
 
 	fstream file;
@@ -257,8 +265,11 @@ void ALocalFileDatabaseActor::InsertUserToTable(FString userName, FString data)
 		FString right;
 		queryData.query.Split(TEXT(","), &left, &right);
 
-		FString newQuery = FString::FromInt(lastEventId) + "," + '"' + StringToFString(newUserName) + '"' + "," + right;
-		//UE_LOG(LogTemp, Warning, TEXT("InsertUser9q867: %s"), *newQuery);
+		FString newQuery = FString::FromInt(lastEventId) + "," + '"' + userName + '"' + "," + right;
+		//FString newQuery = FString::FromInt(lastEventId) + "," + '"' + StringToFString(newUserName) + '"' + "," + right;
+
+		// Hipótesis 10 del doctorado: Si quito este "print" no se envían las cosas a la base de datos.
+		//UE_LOG(LogTemp, Warning, TEXT("InsertUser: %s"), *newQuery);
 
 		file << '\n';
 		file << FStringToString(newQuery);

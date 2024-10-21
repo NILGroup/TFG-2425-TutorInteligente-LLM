@@ -1,0 +1,104 @@
+/**
+ * \mainpage Radiation Room
+ * \author Alejandro Villar Rubio <avillarrubio@ucm.es>
+ * 
+ * Aplicación de realidad virtual para el aprendizaje de profesionales para emergencias radiológicas usando tutorización interactiva.
+ */
+
+
+
+
+/**
+ * \defgroup code C++ Classes
+ * @{
+ * Description for the C++ Classes group.
+ * @}
+ */
+
+
+
+
+
+/**
+ * \defgroup blueprint Blueprints
+ * @{
+ * Description for the Blueprints group.
+ * @}
+ */
+
+/**
+ * \defgroup player Player
+ * \ingroup blueprint
+ * @{
+ * Description for the Player group.
+ * @}
+ */
+
+/**
+ * \defgroup database Database
+ * \ingroup blueprint
+ * @{
+ * Description for the Database group.
+ * @}
+ */
+
+/**
+ * \defgroup gameplay Gameplay
+ * \ingroup blueprint
+ * @{
+ * Description for the Gameplay group.
+ * @}
+ */
+
+/**
+ * \defgroup ui User Interfaces
+ * \ingroup blueprint
+ * @{
+ * Description for the User Interfaces group.
+ * @}
+ */
+
+
+
+/**
+ * \defgroup component Components
+ * @{
+ * Description for the Components group.
+ * @}
+ */
+
+
+
+/**
+ * \defgroup interface Interfaces
+ * @{
+ * Description for the Interfaces group.
+ * @}
+ */
+
+
+
+ /**
+ * \defgroup functionlib Function Libraries
+ * @{
+ * Description for the Function Libraries group.
+ * @}
+ */
+
+
+
+/**
+ * \defgroup datastructure Data Structures
+ * @{
+ * Description for the Data Structures group.
+ * @}
+ */
+
+
+
+ /**
+ * \defgroup widget Widgets
+ * @{
+ * Description for the Widget group.
+ * @}
+ */

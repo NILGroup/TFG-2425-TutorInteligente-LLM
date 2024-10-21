@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <filesystem>
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
@@ -57,6 +58,9 @@ public:
 	void Init();
 
 	UFUNCTION(BlueprintCallable, category = "LocalFileDatabaseActor")
+	void CreateNewDirectoryAndSetPath(FString path, FString directoryName);
+
+	UFUNCTION(BlueprintCallable, category = "LocalFileDatabaseActor")
 	void SetPath(FString path);
 
 	UFUNCTION(BlueprintCallable, category = "LocalFileDatabaseActor")
@@ -78,7 +82,7 @@ public:
 	UFUNCTION(BlueprintCallable, category = "LocalFileDatabaseActor")
 	void InsertUserToTable(FString userName, FString data);
 
-	UFUNCTION(BlueprintCallable, category = "LocalFileDatabaseActor")
+	UFUNCTION(BlueprintCallable, BlueprintPure, category = "LocalFileDatabaseActor")
 	bool AreThereQuerysToInsert();
 
 	UFUNCTION(BlueprintCallable, category = "LocalFileDatabaseActor")
