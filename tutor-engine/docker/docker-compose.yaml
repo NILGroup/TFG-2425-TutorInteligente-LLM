@@ -1,0 +1,12 @@
+
+services:
+  app:
+    build:
+        context: ..
+        dockerfile: docker/Dockerfile
+    image: tutor
+    container_name: tutor-app-container
+    ports:
+      - "127.0.0.1:65431:65431"
+    volumes:
+      - ../output-reports:/workdir/output-reports

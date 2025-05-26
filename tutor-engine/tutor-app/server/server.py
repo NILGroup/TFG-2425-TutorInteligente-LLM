@@ -1,6 +1,7 @@
 import socket
 import threading
 from server.client_listener import listen
+from server.connection import Connection
 
 SERVER_MSG = "SERVER MSG:"
 
@@ -11,7 +12,7 @@ def start_server(ip:str, port:int):
         print(f"{SERVER_MSG} Tutor listening to {ip}:{port}")
         while True:
             conn, addr = s.accept()
-            listener = threading.Thread(target=listen, args=(conn, addr))
+            listener = threading.Thread(target=listen, args=(Connection(conn), addr))
             listener.start()
 
     print(f"{SERVER_MSG} Server disconnected")
